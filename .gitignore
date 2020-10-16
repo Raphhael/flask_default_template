@@ -1,3 +1,7 @@
+app/static/style/*.css
+app/static/style/*.js
+app/static/style/*.map
+
 /instance/error.log
 /instance/configuration.cfg
 /instance/*.sqlite
