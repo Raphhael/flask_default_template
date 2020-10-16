@@ -1,0 +1,23 @@
+
+
+<footer class="text-center">
+  <p class="mt-5 mb-3 text-muted">
+    &copy; 2017-2020 -
+
+    {% if not skip_login_menu %}
+      <a class="btn btn-outline-secondary btn-sm"href="{{ url_for_security('login') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain('Login') }}</a>
+    {% endif %}
+    {% if security.unified_signin and not skip_login_menu %}
+      <a class="btn btn-outline-secondary btn-sm" href="{{ url_for_security('us_signin') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain("Unified Sign In") }}</a><br/>
+    {% endif %}
+    {% if security.registerable %}
+      <a class="btn btn-outline-secondary btn-sm" href="{{ url_for_security('register') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain('Register') }}</a><br/>
+    {% endif %}
+    {% if security.recoverable %}
+      <a class="btn btn-outline-secondary btn-sm" href="{{ url_for_security('forgot_password') }}">{{ _fsdomain('Forgot password') }}</a><br/>
+    {% endif %}
+    {% if security.confirmable %}
+      <a class="btn btn-outline-secondary btn-sm" href="{{ url_for_security('send_confirmation') }}">{{ _fsdomain('Confirm account') }}</a>
+    {% endif %}
+  </p>
+</footer>

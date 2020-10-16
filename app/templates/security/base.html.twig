@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  {% block navbar %}
+  {%- endblock navbar %}
+
+  <form class="form-signin" action="{{ url_for('auth.login') }}" method="POST">
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+
+    {% if errors | length %}
+        <div class="alert alert-danger my-3" role="alert">
+          {% for err in errors %}
+            {{ err }}<br>
+          {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="form-label-group">
+      <input type="email" id="inputEmail" class="form-control" name="username" placeholder="Adresse e-mail" required autofocus>
+      <label for="inputEmail">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" name="password" required>
+      <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="yes" name="cookiesave"> Rester connecté sur cet appareil
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+  </form>
+  
+  {% block scripts %}
+  {%- endblock scripts %}
+
+  <footer class="text-center">
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020 - <a href="{{ url_for('auth.register') }}" class="btn btn-outline-secondary btn-sm">S'enregistrer</a></p>
+  </footer>
+{% endblock %}

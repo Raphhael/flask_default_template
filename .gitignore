@@ -1,3 +1,7 @@
+/instance/error.log
+/instance/configuration.cfg
+/instance/*.sqlite
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
