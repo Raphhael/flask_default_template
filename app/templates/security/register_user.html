@@ -1,0 +1,23 @@
+{% extends "security/base.html.twig" %}
+{% from "security/_macros.html.twig" import render_field_with_errors, render_field, render_field_errors %}
+
+{% block content %}
+  <form class="floating-labels" action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
+
+    <h1 class="h3 mb-3 font-weight-normal">{{ _fsdomain('Register') }}</h1>
+
+    {% include "security/_messages.html.twig" %}
+
+    {{ register_user_form.hidden_tag() }}
+    {{ render_field_with_errors(register_user_form.username) }}
+    {{ render_field_with_errors(register_user_form.password) }}
+    {% if register_user_form.password_confirm %}
+      {{ render_field_with_errors(register_user_form.password_confirm) }}
+    {% endif %}
+    {{ render_field(register_user_form.submit) }}
+
+  </form>
+  {% include "security/_menu.html.twig" %}
+
+
+{% endblock %}
